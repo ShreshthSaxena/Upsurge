@@ -38,17 +38,17 @@ public protocol TensorType {
 
 public extension TensorType {
     /// The size of each dimension
-    var dimensions: [Int] {
+    public var dimensions: [Int] {
         return span.dimensions
     }
 
     /// The number of dimensions
-    var rank: Int {
+    public var rank: Int {
         return span.rank
     }
 
     /// Convert a high-dimensional index into an integer index for a LinearType
-    func linearIndex(_ indices: [Int]) -> Int {
+    public func linearIndex(_ indices: [Int]) -> Int {
         precondition(indexIsValid(indices))
         var index = indices[0]
         for (i, dim) in span.dimensions[1..<rank].enumerated() {
@@ -58,7 +58,7 @@ public extension TensorType {
     }
 
     /// Check that an index falls within the span
-    func indexIsValid(_ indices: [Int]) -> Bool {
+    public func indexIsValid(_ indices: [Int]) -> Bool {
         return indices.count == rank && indices.enumerated().all { (i, index) in
             self.span[i].contains(index)
         }

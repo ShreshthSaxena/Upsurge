@@ -34,27 +34,27 @@ public protocol LinearType: TensorType, CustomStringConvertible, CustomDebugStri
 }
 
 public extension LinearType {
-    var dimensions: [Int] {
+    public var dimensions: [Int] {
         return [count]
     }
 
-    func index(after i: Int) -> Int {
+    public func index(after i: Int) -> Int {
         return i + 1
     }
 
-    func index(before i: Int) -> Int {
+    public func index(before i: Int) -> Int {
         return i - 1
     }
 
-    func formIndex(after i: inout Int) {
+    public func formIndex(after i: inout Int) {
         i += 1
     }
 
-    var description: String {
+    public var description: String {
         return "[\(map { "\($0)" }.joined(separator: ", "))]"
     }
 
-    var debugDescription: String {
+    public var debugDescription: String {
         return description
     }
 }

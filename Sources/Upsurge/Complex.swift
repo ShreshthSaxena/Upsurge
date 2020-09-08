@@ -59,9 +59,8 @@ public struct Complex<Element: Real>: Value {
         return Complex(real: x.magnitude, imag: 0.0)
     }
 
-    public func hash(into: inout Hasher) {
-        into.combine(real)
-        into.combine(imag)
+    public var hashValue: Int {
+        return real.hashValue ^ imag.hashValue
     }
 
     public var description: String {
